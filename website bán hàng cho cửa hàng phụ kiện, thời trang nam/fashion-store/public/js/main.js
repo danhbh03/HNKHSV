@@ -28,6 +28,14 @@
         if ($('.product__filter').length > 0) {
             var containerEl = document.querySelector('.product__filter');
             var mixer = mixitup(containerEl);
+            const firstItem = containerEl.querySelector('.mix');
+            if (firstItem) {
+                // Lấy danh sách class, bỏ 'mix' đi
+                const classes = Array.from(firstItem.classList).filter(cls => cls !== 'mix');
+                classes.forEach(className => {
+                    mixer.filter('.' + className);
+                })
+            }
         }
     });
 

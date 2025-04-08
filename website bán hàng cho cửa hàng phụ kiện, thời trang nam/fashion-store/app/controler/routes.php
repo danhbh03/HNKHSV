@@ -5,7 +5,7 @@ use Slim\App;
 use Psr\Http\Message\ServerRequestInterface as RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Container\ContainerInterface;
-require_once __DIR__ . '/../models/shopModel.php';
+require_once __DIR__ . '/../models/productModel.php';
 use function PHPUnit\Framework\equalToIgnoringCase;
 
 return function (App $app) {
@@ -56,14 +56,20 @@ return function (App $app) {
     });
     $app->get('/index', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $db = $app->getContainer()->get('db');
-        $stmt = $db->query("SELECT * FROM mens_fashion");
-        $mens_fashion = $stmt->fetchAll();
+        $productModel = new ProductModel($db);
+        $queryParams = $request->getQueryParams();
+        $BestSeller = $productModel->getProductBySaleType(2);
+        $HotSale = $productModel->getProductBySaleType(1);
+        $NewArrival = $productModel->getProductBySaleType(0);
         $itemsPerPage = 8;
-
-        $filter = $request->getQueryParams()['filter'] ?? "";
         $container = $app->getContainer();
         $view = $container->get('view');
-        return $view->render($response, 'index.php');
+        return $view->render($response, 'index.php', [
+            'BestSeller' => $BestSeller,
+            'HotSale' => $HotSale,
+            'NewArrival' => $NewArrival,
+            'itemsPerPage' => $itemsPerPage,
+        ]);
     });
     $app->get('/shop', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $db = $app->getContainer()->get('db');

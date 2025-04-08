@@ -46,5 +46,11 @@ class ProductModel {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function getProductBySaleType($saleType) {
+        $stmt = $this->db->prepare("SELECT * FROM mens_fashion WHERE Sale_type = :saleType");
+        $stmt->bindParam(':saleType', $saleType, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
