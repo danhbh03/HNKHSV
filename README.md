@@ -1,7 +1,1 @@
-open git bash in visual studio code
-cd to fashion-store
-then
-alias composer='php /composer.phar'
-then
-php -S localhost:8080 -t public
-click on the link and add /index to it
+Open git bash in visual studio code then cd to fashion-store. After that type alias composer='php /composer.phar' on git bash then type php -S localhost:8080 -t public. Lastly click on the link in git bash and add /index to it
