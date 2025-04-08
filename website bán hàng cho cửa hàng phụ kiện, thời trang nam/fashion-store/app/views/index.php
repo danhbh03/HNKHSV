@@ -35,7 +35,7 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">Sign in</a>
+                <a href="#">Đăng Nhập</a>
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -55,7 +55,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+            <p>Miễn phí vận chuyển, chấp nhận hoàn trả trong vòng 30 ngày.</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -67,13 +67,13 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
+                            <p>Miễn phí vận chuyển, chấp nhận hoàn trả trong vòng 30 ngày.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                                <a href="#">Đăng Nhập</a>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -99,18 +99,18 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index">Home</a></li>
-                            <li><a href="./shop">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li class="active"><a href="./index">Trang Chủ</a></li>
+                            <li><a href="./shop">Mua Hàng</a></li>
+                            <li><a href="#">Trang</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details">Shop Details</a></li>
-                                    <li><a href="./shopping-cart">Shopping Cart</a></li>
-                                    <li><a href="./checkout">Check Out</a></li>
-                                    <li><a href="./blog-details">Blog Details</a></li>
+                                    <li><a href="./shop-details">Chi Tiết Cửa Hàng</a></li>
+                                    <li><a href="./shopping-cart">Giỏ Hàng</a></li>
+                                    <li><a href="./checkout">Thanh Toán</a></li>
+                                    <li><a href="./blog-details">Chi Tiết Blog</a></li>
                                 </ul>
                             </li>
                             <li><a href="./blog">Blog</a></li>
-                            <li><a href="./contact">Contacts</a></li>
+                            <li><a href="./contact">Liên Hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -136,11 +136,11 @@
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2025</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <h6>Bộ Sưu Tập Hè</h6>
+                                <h2>Bộ Sưu Tập Áo Blazer</h2>
+                                <p>Nhãn hàng chuyên tạo nên những thiết kế cao cấp,
+                                    được chế tác chuẩn mực với cam kết luôn mang tới chất lượng vượt trội.</p>
+                                <a href="#" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -157,11 +157,11 @@
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2025</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <h6>Bộ Sưu Tập Hè</h6>
+                                <h2>Bộ Sưu Tập Phụ Kiện</h2>
+                                <p>Được thiết kế để song hành cùng những bộ trang phục đẳng cấp, 
+                                    mỗi phụ kiện là mảnh ghép hoàn hảo của vẻ ngoài chuyên nghiệp và tinh tế.</p>
+                                <a href="#" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -198,8 +198,8 @@
                             <img src="img/banner/banner-2.jpg" alt="">
                         </div>
                         <div class="banner__item__text">
-                            <h2>Accessories</h2>
-                            <a href="#">Shop now</a>
+                            <h2>Phụ Kiện</h2>
+                            <a href="#">Mua Ngay</a>
                         </div>
                     </div>
                 </div>
@@ -209,8 +209,8 @@
                             <img src="img/banner/banner-3.jpg" alt="">
                         </div>
                         <div class="banner__item__text">
-                            <h2>Shoes Spring 2025</h2>
-                            <a href="#">Shop now</a>
+                            <h2>Giày</h2>
+                            <a href="#">Mua Ngay</a>
                         </div>
                     </div>
                 </div>
@@ -225,9 +225,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="filter__controls">
-                        <li class="active" data-filter=".best-sellers">Best Sellers</li>
-                        <li data-filter=".new-arrivals">New Arrivals</li>
-                        <li data-filter=".hot-sales">Hot Sales</li>
+                        <li class="active" data-filter=".best-sellers">Bán Chạy Nhất</li>
+                        <li data-filter=".new-arrivals">Hàng Mới Về</li>
+                        <li data-filter=".hot-sales">Ưu Đãi Mới</li>
                     </ul>
                 </div>
             </div>
@@ -241,13 +241,13 @@
                                     <span class="label"><?= strtoupper($label) ?></span>
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>So Sánh</span></a></li>
                                         <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
                                     <h6><?= htmlspecialchars($products[$i]['Product_name']) ?></h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="#" class="add-cart">Thêm Vào Giỏ Hàng</a>
                                     <div class="rating">
                                         <?php for ($star = 0; $star < 5; $star++): ?>
                                             <i class="fa fa-star-o"></i>
@@ -276,41 +276,41 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="categories__text">
-                        <h2><span>Accessories</span></h2>
+                        <h2><span>Phụ Kiện</span></h2>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
                         <img src="img/product-sale.png" alt="">
                         <div class="hot__deal__sticker">
-                            <span>Sale Of</span>
+                            <span>Giá Bán</span>
                             <h5>1,200,000 VNĐ</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 offset-lg-1">
                     <div class="categories__deal__countdown">
-                        <span>Deal Of The Week</span>
+                        <span>Ưu Đãi Trong Tuần</span>
                         <h2>Ví ngang Nam da bò nhập khẩu Aristino AWE0260Z</h2>
                         <div class="categories__deal__countdown__timer" id="countdown">
                             <div class="cd-item">
                                 <span>3</span>
-                                <p>Days</p>
+                                <p>Ngày</p>
                             </div>
                             <div class="cd-item">
                                 <span>1</span>
-                                <p>Hours</p>
+                                <p>Giờ</p>
                             </div>
                             <div class="cd-item">
                                 <span>50</span>
-                                <p>Minutes</p>
+                                <p>Phút</p>
                             </div>
                             <div class="cd-item">
                                 <span>18</span>
-                                <p>Seconds</p>
+                                <p>Giây</p>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Shop now</a>
+                        <a href="#" class="primary-btn">Mua Ngay</a>
                     </div>
                 </div>
             </div>
@@ -401,39 +401,39 @@
                         <div class="footer__logo">
                             <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
-                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <p>Khách hàng là trung tâm trong mô hình kinh doanh độc đáo của chúng tôi, bao gồm cả thiết kế.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
                     <div class="footer__widget">
-                        <h6>Shopping</h6>
+                        <h6>Mua Sắm</h6>
                         <ul>
-                            <li><a href="#">Clothing Store</a></li>
-                            <li><a href="#">Trending Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sale</a></li>
+                            <li><a href="#">Quần Áo</a></li>
+                            <li><a href="#">Giày</a></li>
+                            <li><a href="#">Phụ Kiện</a></li>
+                            <li><a href="#">Ưu Đãi</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="footer__widget">
-                        <h6>Shopping</h6>
+                        <h6>Dịch Vụ</h6>
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                            <li><a href="#">Phương Thức Thanh Toán</a></li>
+                            <li><a href="#">Trạng Thái Đơn Hàng</a></li>
+                            <li><a href="#">Đổi Hàng / Trả Hàng</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
                     <div class="footer__widget">
-                        <h6>NewLetter</h6>
+                        <h6>Tin Tức</h6>
                         <div class="footer__newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <p>Đăng ký để biết về sản phẩm mới, bộ sưu tập, và các ưu đãi độc quyền sớm nhất!</p>
                             <form action="#">
-                                <input type="text" placeholder="Your email">
+                                <input type="text" placeholder="Email">
                                 <button type="submit"><span class="icon_mail_alt"></span></button>
                             </form>
                         </div>
@@ -464,7 +464,7 @@
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
             <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+                <input type="text" id="search-input" placeholder="Tìm kiếm ở đây.....">
             </form>
         </div>
     </div>
