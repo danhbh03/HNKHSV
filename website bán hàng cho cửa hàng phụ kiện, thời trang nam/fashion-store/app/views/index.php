@@ -77,12 +77,12 @@
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
+                                <span>VNĐ <i class="arrow_carrot-down"></i></span>
+                                <!-- <ul>
                                     <li>USD</li>
                                     <li>EUR</li>
                                     <li>USD</li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                         <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
                         <a href="#"><img src="img/icon/heart.png" alt=""></a>
                         <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <div class="price">0 VNĐ</div>
                     </div>
                 </div>
             </div>
@@ -131,16 +131,16 @@
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__items set-bg" data-setbg="img/hero/banner-ao-blazer.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h6>Bộ Sưu Tập Hè</h6>
+                                <!-- <h6>Bộ Sưu Tập Hè</h6> -->
                                 <h2>Bộ Sưu Tập Áo Blazer</h2>
                                 <p>Nhãn hàng chuyên tạo nên những thiết kế cao cấp,
                                     được chế tác chuẩn mực với cam kết luôn mang tới chất lượng vượt trội.</p>
-                                <a href="#" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
+                                <a href="/shop?filter=%C3%81o+Blazer" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -152,16 +152,16 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
+            <div class="hero__items set-bg" data-setbg="img/hero/banner-vi.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h6>Bộ Sưu Tập Hè</h6>
+                                <!-- <h6>Bộ Sưu Tập Hè</h6> -->
                                 <h2>Bộ Sưu Tập Phụ Kiện</h2>
                                 <p>Được thiết kế để song hành cùng những bộ trang phục đẳng cấp, 
                                     mỗi phụ kiện là mảnh ghép hoàn hảo của vẻ ngoài chuyên nghiệp và tinh tế.</p>
-                                <a href="#" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
+                                <a href="/shop?filter=V%C3%AD" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -199,7 +199,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Phụ Kiện</h2>
-                            <a href="#">Mua Ngay</a>
+                            <a href="/shop?filter=V%C3%AD">Mua Ngay</a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Giày</h2>
-                            <a href="#">Mua Ngay</a>
+                            <a href="/shop?filter=Giày">Mua Ngay</a>
                         </div>
                     </div>
                 </div>
