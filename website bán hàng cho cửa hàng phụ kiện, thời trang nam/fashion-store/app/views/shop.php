@@ -35,7 +35,12 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">Đăng nhập</a>
+            <?php if (!empty($fullname)): ?>
+                <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname) ?></a>
+                <a href="/logout" class="primary-btn">Đăng xuất</a>
+            <?php else: ?>
+                <a href="/login" class="primary-btn">Đăng nhập</a>
+            <?php endif; ?>
                 <a href="#">FAQS</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -73,8 +78,13 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Đăng nhập</a>
-                                <a href="#">FAQS</a>
+                            <?php if ($fullname!==null): ?>
+                                <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname ?? $_SESSION['user']['username']) ?></a>
+                                <a href="/logout" class="primary-btn">Đăng xuất</a>
+                            <?php else: ?>
+                                <a href="/login" class="primary-btn">Đăng nhập</a>
+                            <?php endif; ?>
+                            <a href="#">FAQS</a>
                             </div>
                             <div class="header__top__hover">
                                 <span>VND <i class="arrow_carrot-down"></i></span>
@@ -376,10 +386,11 @@
                     <div class="footer__widget">
                         <h6>Cửa Hàng</h6>
                         <ul>
-                            <li><a href="#">Quần Áo</a></li>
-                            <li><a href="#">Giày</a></li>
-                            <li><a href="#">Phụ Kiện</a></li>
-                            <li><a href="#">Khuyến Mại</a></li>
+                            <li><a href="http://localhost:8080/shop?search=%C3%A1o">Áo</a></li>
+                            <li><a href="http://localhost:8080/shop?search=qu%E1%BB%8B">Quần</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=Gi%C3%A0y">Giày</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=V%C3%AD">Ví</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=T%C3%BAi+X%C3%A1ch">Túi xách</a></li>
                         </ul>
                     </div>
                 </div>
@@ -387,8 +398,8 @@
                     <div class="footer__widget">
                         <h6>Mua Sắm</h6>
                         <ul>
-                            <li><a href="#">Liên Hệ với Chúng Tôi</a></li>
-                            <li><a href="#">Phương Thức Thanh Toán</a></li>
+                            <li><a href="/contact">Liên Hệ với Chúng Tôi</a></li>
+                            <!-- <li><a href="#">Phương Thức Thanh Toán</a></li> -->
                             <li><a href="#">Giao Hàng</a></li>
                             <li><a href="#">Trả Hàng / Đổi Hàng</a></li>
                         </ul>

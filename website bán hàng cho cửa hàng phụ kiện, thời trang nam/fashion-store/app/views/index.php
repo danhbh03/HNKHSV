@@ -35,7 +35,7 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">Đăng Nhập</a>
+                <a href="/login">Đăng Nhập</a>
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -73,7 +73,7 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Đăng Nhập</a>
+                                <a href="/login">Đăng Nhập</a>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -141,12 +141,12 @@
                                 <p>Nhãn hàng chuyên tạo nên những thiết kế cao cấp,
                                     được chế tác chuẩn mực với cam kết luôn mang tới chất lượng vượt trội.</p>
                                 <a href="/shop?filter=%C3%81o+Blazer" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
-                                <div class="hero__social">
+                                <!-- <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-pinterest"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -162,12 +162,12 @@
                                 <p>Được thiết kế để song hành cùng những bộ trang phục đẳng cấp, 
                                     mỗi phụ kiện là mảnh ghép hoàn hảo của vẻ ngoài chuyên nghiệp và tinh tế.</p>
                                 <a href="/shop?filter=V%C3%AD" class="primary-btn">Mua Ngay <span class="arrow_right"></span></a>
-                                <div class="hero__social">
+                                <!-- <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-pinterest"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
-                        <img src="img/product-sale.png" alt="">
+                        <img src="img/hotsale.png" alt="">
                         <div class="hot__deal__sticker">
                             <span>Giá Bán</span>
                             <h5>1,200,000 VNĐ</h5>
@@ -409,10 +409,11 @@
                     <div class="footer__widget">
                         <h6>Mua Sắm</h6>
                         <ul>
-                            <li><a href="#">Quần Áo</a></li>
-                            <li><a href="#">Giày</a></li>
-                            <li><a href="#">Phụ Kiện</a></li>
-                            <li><a href="#">Ưu Đãi</a></li>
+                            <li><a href="http://localhost:8080/shop?search=%C3%A1o">Áo</a></li>
+                            <li><a href="http://localhost:8080/shop?search=qu%E1%BB%8B">Quần</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=Gi%C3%A0y">Giày</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=V%C3%AD">Ví</a></li>
+                            <li><a href="http://localhost:8080/shop?filter=T%C3%BAi+X%C3%A1ch">Túi xách</a></li>
                         </ul>
                     </div>
                 </div>

@@ -19,7 +19,7 @@
     $view($app);
     $middleware = require __DIR__ . '/../app/config/middleware.php';
     $middleware($app);
-    $routes = require __DIR__ . '/../app/controler/routes.php';
+    $routes = require __DIR__ . '/../app/controllers/routes.php';
     $routes($app);
     $app->run();
 ?>

@@ -73,7 +73,7 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                                <a href="/login">Sign in</a>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -130,7 +130,7 @@
 
     <!-- Map Begin -->
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111551.9926412813!2d-90.27317134641879!3d38.606612219170856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1597926938024!5m2!1sen!2sbd" height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3725.4843548293147!2d105.8207!3d20.973213!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135adf663f31ed9%3A0x5112e1bddc759106!2sVinaconex%202!5e0!3m2!1svi!2s!4v1745908964362!5m2!1svi!2s" height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
     <!-- Map End -->
 
@@ -146,7 +146,7 @@
                             <p>As you might expect of a company that began as a high-end interiors contractor, we pay
                                 strict attention.</p>
                         </div>
-                        <ul>
+                        <!-- <ul>
                             <li>
                                 <h4>America</h4>
                                 <p>195 E Parker Square Dr, Parker, CO 801 <br />+43 982-314-0958</p>
@@ -155,7 +155,7 @@
                                 <h4>France</h4>
                                 <p>109 Avenue Léon, 63 Clermont-Ferrand <br />+12 345-423-9893</p>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -209,10 +209,10 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
+                            <!-- <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Payment Methods</a></li>
                             <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
+                            <li><a href="#">Return & Exchanges</a></li> -->
                         </ul>
                     </div>
                 </div>
