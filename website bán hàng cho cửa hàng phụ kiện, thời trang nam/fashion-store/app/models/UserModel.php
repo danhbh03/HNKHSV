@@ -16,6 +16,12 @@
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
+        public function findByEmail($email) {
+            $stmt = $this->db->prepare('SELECT * FROM customer WHERE email = :email');
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 
         public function updateToken($userId, $token) {
             $stmt = $this->db->prepare('UPDATE login_info SET token = :token WHERE id = :id');

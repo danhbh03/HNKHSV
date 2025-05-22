@@ -33,25 +33,27 @@
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="/login">Đăng Nhập</a>
-                <a href="#">FAQs</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>VNĐ <i class="arrow_carrot-down"></i></span>
-                <!-- <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul> -->
-            </div>
+        <div class="offcanvas__links">
+            <?php if (!empty($fullname)): ?>
+                <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname) ?></a>
+                <a href="/logout" class="primary-btn">Đăng xuất</a>
+            <?php else: ?>
+                <a href="/login" class="primary-btn">Đăng nhập</a>
+            <?php endif; ?>
+        </div>
+        <div class="offcanvas__top__hover">
+            <span>VNĐ <i class="arrow_carrot-down"></i></span>
+            <!-- <ul>
+                <li>USD</li>
+                <li>EUR</li>
+                <li>USD</li>
+            </ul> -->
         </div>
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
             <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price">0 VNĐ</div>
+            <a href="./shopping-cart"><img src="img/icon/cart.png" alt=""></a>
+            <div class="price"><?=htmlspecialchars($cartPrice)." VNĐ" ?></div>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
@@ -73,11 +75,15 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="/login">Đăng Nhập</a>
-                                <a href="#">FAQs</a>
+                                <?php if ($fullname!==null): ?>
+                                    <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname ?? $_SESSION['user']['username']) ?></a>
+                                    <a href="/logout" class="primary-btn">Đăng xuất</a>
+                                <?php else: ?>
+                                    <a href="/login" class="primary-btn">Đăng nhập</a>
+                                <?php endif; ?>
                             </div>
                             <div class="header__top__hover">
-                                <span>VNĐ <i class="arrow_carrot-down"></i></span>
+                                <span>VND <i class="arrow_carrot-down"></i></span>
                                 <!-- <ul>
                                     <li>USD</li>
                                     <li>EUR</li>
@@ -101,7 +107,7 @@
                         <ul>
                             <li class="active"><a href="./index">Trang Chủ</a></li>
                             <li><a href="./shop">Mua Hàng</a></li>
-                            <li><a href="#">Trang</a>
+                            <!-- <li><a href="#">Trang</a>
                                 <ul class="dropdown">
                                     <li><a href="./shop-details">Chi Tiết Cửa Hàng</a></li>
                                     <li><a href="./shopping-cart">Giỏ Hàng</a></li>
@@ -109,7 +115,7 @@
                                     <li><a href="./blog-details">Chi Tiết Blog</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog">Blog</a></li>
+                            <li><a href="./blog">Blog</a></li> -->
                             <li><a href="./contact">Liên Hệ</a></li>
                         </ul>
                     </nav>
@@ -118,8 +124,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
                         <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">0 VNĐ</div>
+                        <a href="./shopping-cart"><img src="img/icon/cart.png" alt=""> </a>
+                        <div class="price"><?=htmlspecialchars($cartPrice)." VNĐ" ?></div>
                     </div>
                 </div>
             </div>
@@ -247,12 +253,12 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><?= htmlspecialchars($products[$i]['Product_name']) ?></h6>
-                                    <a href="#" class="add-cart">Thêm Vào Giỏ Hàng</a>
-                                    <div class="rating">
+                                    <a href="shop/<?= $products[$i]['Id'] ?>" class="add-cart">Thêm Vào Giỏ Hàng</a>
+                                    <!-- <div class="rating">
                                         <?php for ($star = 0; $star < 5; $star++): ?>
                                             <i class="fa fa-star-o"></i>
                                         <?php endfor; ?>
-                                    </div>
+                                    </div> -->
                                     <h5><?= number_format($products[$i]['Price']) ?> VNĐ</h5>
                                 </div>
                             </div>         
@@ -310,7 +316,7 @@
                                 <p>Giây</p>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Mua Ngay</a>
+                        <a href="shop/111" class="primary-btn">Mua Ngay</a>
                     </div>
                 </div>
             </div>

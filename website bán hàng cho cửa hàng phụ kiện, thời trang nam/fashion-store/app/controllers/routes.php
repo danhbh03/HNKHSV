@@ -10,10 +10,12 @@ require_once __DIR__ . '/../models/productModel.php';
 require_once __DIR__ . '/../models/RabbitMQService.php';
 require_once __DIR__ . '/../models/RedisService.php';
 require_once __DIR__ . '/./ShopControler.php';
+require_once __DIR__ . '/./AuthController.php';
 use App\Models\UserModel;
 use App\Models\CachingAndSession\RedisService;
 use App\Models\ProductModel;
 use App\Controllers\ShopController;
+use App\Controllers\AuthController;
 use function PHPUnit\Framework\equalToIgnoringCase;
 
 return function (App $app) {
@@ -23,20 +25,58 @@ return function (App $app) {
     $app->get('/', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         return $response->withHeader('Location', '/index')->withStatus(302);
     });
-    $app->get('/hello/{name}', function (RequestInterface $request, ResponseInterface $response, $args) {
-        $name = $args['name'];
-        $response->getBody()->write("Hello, $name");
-        return $response;
-    });
     $app->get('/shop-details', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $container = $app->getContainer();
         $view = $container->get('view');
         return $view->render($response, 'shop-details.php');
     });
     $app->get('/shopping-cart', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+            return $response->withHeader('Location', '/login')->withStatus(302);
+        }
+        $redis = new RedisService();
+        if ($redis->get('user_token_' . $userId) === null) {
+            return $response->withHeader('Location', '/logout')->withStatus(302);
+        }
         $container = $app->getContainer();
         $view = $container->get('view');
-        return $view->render($response, 'shopping-cart.php');
+        $db = $container->get('db');
+        $stmt = $db->prepare('SELECT fullname FROM customer WHERE id =:id;');
+        $stmt->bindParam(':id', $userId);
+        $stmt->execute();
+        $name = $stmt->fetchColumn() ?? null;
+        if ($name === null) {
+            return $response->withHeader('Location', '/logout')->withStatus(302);
+        }
+        $db = $app->getContainer()->get('db');
+        $stmt = $db->prepare('SELECT mf.*, op.quantity, o.id AS order_id, o.order_date 
+                            FROM orders o
+                            JOIN order_product op ON o.id = op.order_id
+                            JOIN mens_fashion mf ON op.product_id = mf.Id
+                            WHERE o.customer_id = :user_id AND o.cur_status = 0;');
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $date = $_SESSION['date']??(new \DateTime())->format('Y-m-d');
+        $cartItem = [];
+        foreach ($cart as $item) {
+            if ($item['order_date'] == $date) {
+                $cartItem[] = $item;
+            }
+        }
+        $cartPrice = 0;
+        foreach ($cart as $item) {
+            $cartPrice += ($item['Price'] ?? 0) * ($item['quantity'] ?? 0);
+        }
+        $container = $app->getContainer();
+        $view = $container->get('view');
+        return $view->render($response, 'shopping-cart.php'
+            , [
+                'fullname' => $name,
+                'cart' => $cartItem,
+                'cartPrice' => $cartPrice,
+            ]);
     });
     $app->get('/logout', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $_SESSION = [];
@@ -53,7 +93,7 @@ return function (App $app) {
             );
         }
 
-        return $response->withHeader('Location', '/shop')->withStatus(302);
+        return $response->withHeader('Location', '/login')->withStatus(302);
     });
     $app->get('/login', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $container = $app->getContainer();
@@ -76,6 +116,14 @@ return function (App $app) {
         return $view->render($response, 'blog.php');
     });
     $app->get('/contact', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+            return $response->withHeader('Location', '/login')->withStatus(302);
+        }
+        $redis = new RedisService();
+        if ($redis->get('user_token_' . $userId) === null) {
+            return $response->withHeader('Location', '/logout')->withStatus(302);
+        }
         $container = $app->getContainer();
         $view = $container->get('view');
         return $view->render($response, 'contact.php');
@@ -86,21 +134,51 @@ return function (App $app) {
         $BestSeller = $productModel->getProductBySaleType(2);
         $HotSale = $productModel->getProductBySaleType(1);
         $NewArrival = $productModel->getProductBySaleType(0);
+        $userId = $_SESSION['user_id'] ?? null;
+        $redis = new RedisService();
+        $name = null;
+        $cart = null;
+        $cartPrice = 0;
+        if ($userId) {
+            $stmt = $db->prepare('SELECT fullname FROM customer WHERE id =:id;');
+            $stmt->bindParam(':id', $userId);
+            $stmt->execute();
+            $name = $stmt->fetchColumn() ?? null;
+            $redis = new RedisService();
+            if ($redis->get('user_token_' . $userId) !== null) {
+                $stmt = $db->prepare('SELECT mf.*, op.quantity, o.id AS order_id
+                                    FROM orders o
+                                    JOIN order_product op ON o.id = op.order_id
+                                    JOIN mens_fashion mf ON op.product_id = mf.Id
+                                    WHERE o.customer_id = :user_id AND o.cur_status = 0;');
+                $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            if ($cart!== null){
+                foreach ($cart as $item) {
+                    $cartPrice += ($item['Price'] ?? 0) * ($item['quantity'] ?? 0);
+                }
+            }    
+        }
         $itemsPerPage = 8;
         $container = $app->getContainer();
         $view = $container->get('view');
         return $view->render($response, 'index.php', [
+            'fullname' => $name,
             'BestSeller' => $BestSeller,
             'HotSale' => $HotSale,
             'NewArrival' => $NewArrival,
             'itemsPerPage' => $itemsPerPage,
+            'cart' => $cart,
+            'cartPrice' => $cartPrice,
         ]);
     });
     $app->post('/login', function (RequestInterface $request, ResponseInterface $response, $args) use ($app) {
         $container = $app->getContainer();
         $view = $container->get('view');
         $db = $container->get('db');
-
+        $redis = new RedisService();
         $data = $request->getParsedBody();
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
@@ -142,12 +220,54 @@ return function (App $app) {
                 }
             }
         } else {
-            return $view->render($response, 'LoginView.php', ['error' => 'Invalid username or password.']);
+            return $view->render($response, 'login.php', ['error' => 'Invalid username or password.']);
         }
     });
     $app->get('/shop', function ($request, $response, $args) use ($app) {
         $container = $app->getContainer();
         $controller = new ShopController($container);
         return $controller->index($request, $response, $args);
-    });    
+    });
+    $app->get('/shop/{id}', function ($request, $response, $args) use ($app) {
+        $container = $app->getContainer();
+        $controller = new ShopController($container);
+        return $controller->addToCart($request, $response, $args);
+    });
+    // $app->post('/shop/{id}', function ($request, $response, $args) use ($app) {
+    //     $container = $app->getContainer();
+    //     $controller = new ShopController($container);
+    //     return $controller->addToCart($request, $response, $args);
+    // }); 
+    
+    $app->post("/shopping-cart/update", function ($request,$response,$args) use ($app){
+        $container = $app->getContainer();
+        $ShopController = new ShopController($container);
+        if (isset($_POST['remove_product_id'])) {
+            return $ShopController->removeProduct($request,$response,$args);
+        }
+        return $ShopController->updateCart($request,$response,$args);
+    });
+    $app->post('/signup', function ($request,$response, $args) use ($app) {
+        $container = $app->getContainer();
+        $view = $container->get('view');
+        $db = $container->get('db');
+        $authController = new AuthController($view, $db);
+        return $authController->signup($request, $response, $args);
+    });
+    $app->post('/vnpay_create_payment', function ($request, $response, $args) use ($app) {
+        $container = $app->getContainer();
+        $view = $container->get('view');
+        $userId = $_SESSION['user_id'] ?? null;
+        if (!$userId) {
+            return $response->withHeader('Location', '/login')->withStatus(302);
+        }
+        $db = $container->get('db');
+        $shopController = new ShopController($container);
+        if($shopController->checkCartEmpty($request,$response,$args) == true){
+            return $response->withHeader('Location', '/shopping-cart',['error' => 'Empty Cart.'])->withStatus(404);
+        }
+        return $shopController->vnpay_create_payment($request, $response, $args);
+    });
+
 };
+?>

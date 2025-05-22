@@ -35,13 +35,12 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-            <?php if (!empty($fullname)): ?>
-                <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname) ?></a>
-                <a href="/logout" class="primary-btn">Đăng xuất</a>
-            <?php else: ?>
-                <a href="/login" class="primary-btn">Đăng nhập</a>
-            <?php endif; ?>
-                <a href="#">FAQS</a>
+                <?php if (!empty($fullname)): ?>
+                    <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname) ?></a>
+                    <a href="/logout" class="primary-btn">Đăng xuất</a>
+                <?php else: ?>
+                    <a href="/login" class="primary-btn">Đăng nhập</a>
+                <?php endif; ?>
             </div>
             <div class="offcanvas__top__hover">
                 <span>VNĐ <i class="arrow_carrot-down"></i></span>
@@ -55,7 +54,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="/img/icon/search.png" alt=""></a>
             <a href="#"><img src="/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="/img/icon/cart.png" alt=""> <span><?=htmlspecialchars(count($cart)) ?></span></a>
+            <a href="./shopping-cart"><img src="/img/icon/cart.png" alt=""> <span><?=htmlspecialchars(array_sum(array_column($cart, 'quantity'))) ?></span></a>
             <div class="price"><?=htmlspecialchars($cartPrice)." VNĐ" ?></div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -70,13 +69,13 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-7">
+                    <div class="col-lg-5 col-md-6" style="display: flex; align-items: center;">
                         <div class="header__top__left">
                             <p>Miễn phí vận chuyển, chấp nhận hoàn trả trong vòng 30 ngày</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="header__top__right" style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
                             <div class="header__top__links">
                             <?php if ($fullname!==null): ?>
                                 <a href="/profile" class="primary-btn">Xin chào <?= htmlspecialchars($fullname ?? $_SESSION['user']['username']) ?></a>
@@ -84,7 +83,6 @@
                             <?php else: ?>
                                 <a href="/login" class="primary-btn">Đăng nhập</a>
                             <?php endif; ?>
-                            <a href="#">FAQS</a>
                             </div>
                             <div class="header__top__hover">
                                 <span>VND <i class="arrow_carrot-down"></i></span>
@@ -111,7 +109,7 @@
                         <ul>
                             <li><a href="./index">Trang Chủ</a></li>
                             <li class="active"><a href="./shop">Mua Hàng</a></li>
-                            <li><a href="#">Trang</a>
+                            <!-- <li><a href="#">Trang</a>
                                 <ul class="dropdown">
                                     <li><a href="./shop-details">Chi Tiết Cửa Hàng</a></li>
                                     <li><a href="./shopping-cart">Giỏ Hàng</a></li>
@@ -119,7 +117,7 @@
                                     <li><a href="./blog-details">Chi Tiết Blog</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog">Blog</a></li>
+                            <li><a href="./blog">Blog</a></li> -->
                             <li><a href="./contact">Liên Hệ</a></li>
                         </ul>
                     </nav>
@@ -128,7 +126,7 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="/img/icon/search.png" alt=""></a>
                         <a href="#"><img src="/img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="/img/icon/cart.png" alt=""> <span>0</span></a>
+                        <a href="/shopping-cart"><img src="/img/icon/cart.png" alt=""></a>
                         <div class="price"><?=htmlspecialchars($cartPrice)." VNĐ" ?></div>
                     </div>
                 </div>
@@ -320,6 +318,7 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- Loop through the products and display them -->
                         <?php for ($i = $start; $i < $end && $i < count($mens_fashion); $i++): ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -332,14 +331,14 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6><?= htmlspecialchars($mens_fashion[$i]['Product_name']) ?></h6>
-                                        <div class="rating">
+                                        <!-- <div class="rating">
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <a href="#" class="add-cart">Thêm Vào Giỏ Hàng</a>
+                                        </div> -->
+                                        <a href="shop/<?= $mens_fashion[$i]['Id'] ?>" class="add-cart">Thêm Vào Giỏ Hàng</a>
                                         <h5><?= htmlspecialchars(number_format($mens_fashion[$i]['Price'], 0, '.', ',') . " VNĐ") ?></h5>
                                     </div>
                                 </div>
@@ -384,7 +383,7 @@
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
                     <div class="footer__widget">
-                        <h6>Cửa Hàng</h6>
+                        <h6>Mua Sắm</h6>
                         <ul>
                             <li><a href="http://localhost:8080/shop?search=%C3%A1o">Áo</a></li>
                             <li><a href="http://localhost:8080/shop?search=qu%E1%BB%8B">Quần</a></li>
@@ -396,7 +395,7 @@
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="footer__widget">
-                        <h6>Mua Sắm</h6>
+                        <h6>Dịch Vụ</h6>
                         <ul>
                             <li><a href="/contact">Liên Hệ với Chúng Tôi</a></li>
                             <!-- <li><a href="#">Phương Thức Thanh Toán</a></li> -->

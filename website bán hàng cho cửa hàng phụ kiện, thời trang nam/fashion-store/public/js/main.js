@@ -187,25 +187,76 @@
         $button.parent().find('input').val(newVal);
     });
 
-    var proQty = $('.pro-qty-2');
-    proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
-    proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
-    proQty.on('click', '.qtybtn', function () {
-        var $button = $(this);
-        var oldValue = $button.parent().find('input').val();
-        if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
+    // var proQty = $('.pro-qty-2');
+    // proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
+    // proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
+    // proQty.on('click', '.qtybtn', function () {
+    //     var $button = $(this);
+    //     var oldValue = $button.parent().find('input').val();
+    //     if ($button.hasClass('inc')) {
+    //         var newVal = parseFloat(oldValue) + 1;
+    //     } else {
+    //         // Don't allow decrementing below zero
+    //         if (oldValue > 0) {
+    //             var newVal = parseFloat(oldValue) - 1;
+    //         } else {
+    //             newVal = 0;
+    //         }
+    //     }
+    //     $button.parent().find('input').val(newVal);
+    // });
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('input', function () {
+            const quantity = parseInt(this.value) || 1;
+            const price = parseFloat(this.dataset.price);
+            const id = this.dataset.id;
+            const total = quantity * price;
+            const priceElement = document.getElementById('price-' + id);
+            if (priceElement) {
+                priceElement.textContent = total.toLocaleString() + ' VNĐ';
             }
-        }
-        $button.parent().find('input').val(newVal);
+        });
     });
-
+    function updateTotal() {
+        let total = 0;
+    
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            const quantity = parseInt(input.value) || 1;
+            const price = parseFloat(input.dataset.price);
+            total += quantity * price;
+        });
+    
+        const formatted = total.toLocaleString() + ' VNĐ';
+        // Cập nhật tổng tiền
+        document.getElementById('displaytotal').textContent = formatted;
+        document.getElementById('subtotal').textContent = formatted;
+        document.getElementById('total').textContent = formatted;
+    }
+    function clickUpdate() {
+        document.querySelector('button[name="update"]').click();
+    }
+    
+    // Gọi hàm khi số lượng thay đổi
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('input', function () {
+            const quantity = parseInt(this.value) || 1;
+            const price = parseFloat(this.dataset.price);
+            const id = this.dataset.id;
+            const totalItem = quantity * price;
+    
+            // Cập nhật giá từng dòng
+            const priceElement = document.getElementById('price-' + id);
+            if (priceElement) {
+                priceElement.textContent = totalItem.toLocaleString() + ' VNĐ';
+            }
+    
+            // Cập nhật tổng
+            updateTotal();
+        });
+    });
+    
+    // Gọi hàm tổng khi trang vừa load
+    updateTotal();
     /*------------------
         Achieve Counter
     --------------------*/

@@ -21,30 +21,49 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="/signup">
 					<span class="login100-form-title p-b-49">
 						Sign Up
 					</span>
-
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="username" placeholder="Type your username">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
-
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Fullname is reauired">
+						<span class="label-input100">Fullname</span>
+						<input class="input100" type="text" name="fullname" placeholder="Type your fullname">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Email is reauired">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="email" name="email" placeholder="Type your email">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" name="password" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					<br>
 					<div class="wrap-input100 validate-input" data-validate="Re-type password is required">
 						<span class="label-input100">Re-type password</span>
-						<input class="input100" type="password" name="pass" placeholder="Re-type your password">
+						<input class="input100" type="password" name="retype_password" placeholder="Re-type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					<br>
 					<br>
+					<div class="text-right p-t-8 p-b-31">
+						<a href="/login">
+							Already have an account? Sign In
+						</a>
+					</div>
+					<div class="error-message text-right p-t-8 p-b-31">
+						<?php if (isset($error)): ?>
+							<p style="color: red;"><?= htmlspecialchars($error) ?></p>
+						<?php endif; ?>
+					</div>
+
 					
 					<!-- <div class="text-right p-t-8 p-b-31">
 						<a href="#">

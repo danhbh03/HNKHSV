@@ -10,6 +10,7 @@ class ProductModel {
     }
 
     public function getFilteredProducts($filters, $sort) {
+        
         $conditions = [];
         $params = [];
 
@@ -54,6 +55,13 @@ class ProductModel {
         $stmt->bindParam(':saleType', $saleType, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getProductById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM products WHERE id = :id');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>

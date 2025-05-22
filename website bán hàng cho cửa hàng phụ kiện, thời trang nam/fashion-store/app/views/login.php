@@ -20,7 +20,7 @@
 <body>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('img/bg-01.jpg');">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-54 p-b-54">
 				<form class="login100-form validate-form" method="POST" action="/login">
 					<span class="login100-form-title p-b-49">
 						Login
@@ -38,6 +38,11 @@
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
+					<div class="text-center">
+						<?php if (isset($error)): ?>
+							<p style="color: red;"><?= htmlspecialchars($error) ?></p>
+						<?php endif; ?>
+					</div>
 					<div class="text-right p-t-8 p-b-31">
 						<a href="#">
 							Forgot password?
@@ -73,7 +78,7 @@
 						</a>
 					</div> -->
 
-					<div class="flex-col-c p-t-155">
+					<div class="flex-col-c p-t-50">
 						<span class="txt1 p-b-17">
 							Or Sign Up Using
 						</span>
@@ -82,6 +87,16 @@
 							Sign Up
 						</a>
 					</div>
+					<div class="flex-col-c p-t-20">
+						<span class="txt1 p-b-17">
+							Or Go to
+						</span>
+
+						<a href="/index" class="txt2">
+							Home
+						</a>
+					</div>
+					
 				</form>
 			</div>
 		</div>

@@ -17,6 +17,6 @@ return function (Container $container) {
        $logger->pushHandler($handler);
        return $logger;
    });
-   $container->get(LoggerInterface::class)->debug('example',['context'=>'message']);
+//    $container->get(LoggerInterface::class)->debug('example',['context'=>'message']);
 };
 ?>
