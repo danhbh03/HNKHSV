@@ -1,19 +1,18 @@
 <?php
 
     // Định nghĩa các biến cần thiết
-    function vnpay_create_payment($vnp_Amount,$vnp_TxnRef,$order_id,$vnp_ExpireDate,$fullName,$vnp_IpAddr) {
+    function vnpay_create_payment($vnp_Amount,$order_id,$vnp_ExpireDate,$fullName,$vnp_IpAddr) {
         error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://localhost:8080/vnpay_return.php";
-        $vnp_TmnCode = "1VYBIYQP";//Mã website tại VNPAY 
-        $vnp_HashSecret = "NOH6MBGNLQL9O9OMMFMZ2AX8NIEP50W1"; //Chuỗi bí mật
+        $vnp_TmnCode = "1VYBIYQP";
+        $vnp_HashSecret = "NOH6MBGNLQL9O9OMMFMZ2AX8NIEP50W1";
         
-        $vnp_TxnRef = $_POST['order_id']; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_TxnRef = $order_id;
         $vnp_OrderInfo = "Thanh toán hóa đơn " . $order_id;
         $vnp_OrderType = "other";
-        $vnp_Amount = $_POST['amount'] * 100;
         $vnp_Locale = "vn";
         //Add Params of 2.0.1 Version
         //Billing

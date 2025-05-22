@@ -324,7 +324,7 @@ class ShopController
         ');
         $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
-        $amount = (int)($stmt->fetchColumn() ?? 0)*100;
+        $amount = (int)($stmt->fetchColumn() ?? 0);
 
         $stmt = $db->prepare('SELECT fullname FROM customer WHERE id = :user_id');
         $stmt->bindParam(':user_id', $userId);
@@ -339,7 +339,7 @@ class ShopController
         $expire->add(new DateInterval('PT15M')); // Cộng thêm 15 phút (ví dụ timeout 15 phút)
         $vnp_ExpireDate = $expire->format('YmdHis'); // Định dạng thời gian theo yêu cầu của VNPAY
         require_once(__DIR__ . '/../config/vnpay_create_payment.php');
-        vnpay_create_payment($amount, $order_id, $order_id, $vnp_ExpireDate, $fullName, $vnp_IpAddr);
+        vnpay_create_payment($amount, $order_id, $vnp_ExpireDate, $fullName, $vnp_IpAddr);
         exit;
     }
     public function checkCartEmpty($request, $response, $args)
